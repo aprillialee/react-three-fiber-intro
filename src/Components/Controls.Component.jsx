@@ -7,16 +7,17 @@ const Controls = () => {
   const { camera, gl } = useThree();
   const orbitRef = useRef();
 
-  useFrame(() => {
+  /*useFrame(() => {
     orbitRef.current.update();
-  });
+  });*/
   return (
     <orbitControls
       autoRotate
+      enableZoom={false}
       maxPolarAngle={Math.PI / 3}
       minPolarAngle={Math.PI / 3}
       args={[camera, gl.domElement]}
-      ref={orbitRef}
+      //ref={orbitRef}
     />
   );
 };

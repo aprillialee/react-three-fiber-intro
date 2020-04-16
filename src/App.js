@@ -1,9 +1,12 @@
 import React from "react";
 import { Canvas } from "react-three-fiber";
+
 import * as THREE from "three";
 
-import Box from "./Components/Sphere.Component";
+import Box from "./Components/Box.Component";
 import Plane from "./Components/Plane.Component";
+import Sphere from "./Components/Sphere.Component";
+import Heart from "./Components/Heart.Component";
 
 import Controls from "./Components/Controls.Component";
 
@@ -21,7 +24,9 @@ function App() {
       <fog attach="fog" args={["pink", 5, 15]} />
       <Plane />
       <Controls />
+      <Sphere />
       <Box />
+      <Heart />
     </Canvas>
   );
 }

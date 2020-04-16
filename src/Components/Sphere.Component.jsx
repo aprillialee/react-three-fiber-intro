@@ -1,28 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useSpring, a } from "react-spring/three";
+import { useFrame } from "react-three-fiber";
 
-const Box = () => {
-  const [hovered, setHovered] = useState(false);
+const Sphere = () => {
+  const meshRef = useRef();
+  useFrame(() => {
+    meshRef.current.rotation.z += 0.2;
+  });
   const [active, setActive] = useState(false);
+  const [set, setSet] = useState(false);
   const props = useSpring({
-    scale: active ? [1.5, 1.5, 1.5] : [1, 1, 1],
-    color: hovered ? "palevioletred" : "pink",
+    position: active ? [1, 0, 0] : [0, 1, 0],
+    scale: set ? [0.1, 0.1, 0.1] : [0.2, 0.2, 0.2],
   });
 
   return (
     <a.mesh
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
+      position={props.position}
+      ref={meshRef}
       onClick={() => setActive(!active)}
+      onPointerOver={() => setSet(true)}
+      onPointerOut={() => setSet(false)}
       scale={props.scale}
-      castShadow
     >
-      <ambientLight intensity={0.5} />
-      <spotLight position={[0, 5, 10]} penumbra={0.5} castShadow />
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-      <a.meshPhysicalMaterial attach="material" color={props.color} />
+      <sphereBufferGeometry attach="geometry" args={[1, 15, 15]} />
+      <a.meshPhysicalMaterial attach="material" color="red" transparent />
     </a.mesh>
   );
 };
 
-export default Box;
+export default Sphere;

@@ -9,5 +9,18 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+body {
   background-color: pink;
+}
+
+h1 {
+  position: absolute;
+  top: 0;
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+  color: black;
+  left: 0;
 }
