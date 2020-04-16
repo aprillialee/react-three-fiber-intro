@@ -6,7 +6,7 @@ const Box = () => {
   const [active, setActive] = useState(false);
   const props = useSpring({
     scale: active ? [1.5, 1.5, 1.5] : [1, 1, 1],
-    color: hovered ? "blue" : "orange",
+    color: hovered ? "palevioletred" : "pink",
   });
 
   return (
@@ -15,9 +15,12 @@ const Box = () => {
       onPointerOut={() => setHovered(false)}
       onClick={() => setActive(!active)}
       scale={props.scale}
+      castShadow
     >
+      <ambientLight intensity={0.5} />
+      <spotLight position={[0, 5, 10]} penumbra={0.5} castShadow />
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-      <a.meshBasicMaterial attach="material" color={props.color} />
+      <a.meshPhysicalMaterial attach="material" color={props.color} />
     </a.mesh>
   );
 };
