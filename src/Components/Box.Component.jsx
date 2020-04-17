@@ -17,9 +17,7 @@ const Box = () => {
       scale={props.scale}
       castShadow
     >
-      <ambientLight intensity={0.5} />
-      <spotLight position={[0, 5, 10]} penumbra={0.5} castShadow />
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+      <boxBufferGeometry attach="geometry" args={[2, 2, 2]} />
       <a.meshPhysicalMaterial
         attach="material"
         color={props.color}

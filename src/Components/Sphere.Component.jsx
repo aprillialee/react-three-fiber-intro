@@ -9,9 +9,10 @@ const Sphere = () => {
   });
   const [active, setActive] = useState(false);
   const [set, setSet] = useState(false);
+
   const props = useSpring({
-    position: active ? [1, 0, 0] : [0, 1, 0],
-    scale: set ? [0.1, 0.1, 0.1] : [0.2, 0.2, 0.2],
+    position: set ? [0, 1, 0] : [0, 1, 0],
+    scale: active ? [0.1, 0.1, 0.1] : [0.2, 0.2, 0.2],
   });
 
   return (
@@ -24,7 +25,7 @@ const Sphere = () => {
       scale={props.scale}
     >
       <sphereBufferGeometry attach="geometry" args={[1, 15, 15]} />
-      <a.meshPhysicalMaterial attach="material" color="red" transparent />
+      <a.meshPhysicalMaterial attach="material" color="white" transparent />
     </a.mesh>
   );
 };
